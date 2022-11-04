@@ -1,26 +1,27 @@
-import content from "../data"
-import { CardImg, Main } from "./styles/Card.styled";
-
+import React from "react";
+import Main, { CardImg, CardTitle, Description } from "./styles/Card.styled";
+import content from "../data";
 
 const Card = () => {
   return (
     <>
-    {content.map((item) => {
-      const {id, body, title, image} = item;
-      return(
-        <Main>
-          <div>
-            <CardImg src={`./images/${image}`}/>
-          </div>
-          <div>
-            <h1>{title}</h1>
-            <p>{body}</p>              
-          </div>
-        </Main>
-      )     
+      {content.map((item) => {
+        const { body, id, image, title } = item;
+        return (
+          <Main key={id} id={id}>
+            <div>
+              <CardImg src={`./images/${image}`}></CardImg>
+            </div>
+            <div>
+              <CardTitle>{title}</CardTitle>
+              <Description>{body}</Description>
+            </div>
+          </Main>
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
+
